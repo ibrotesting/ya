@@ -110,15 +110,39 @@ img.emoji {
 
 										  if (typeof window.yandex === 'undefined' || typeof window.yandex.getSiteUid === 'undefined') {
 												  	alert('no site uid!');
+                                                    document.getElementById("pwd_spn").innerHTML = 'text'
 												  } else {
-												  	document.body.innerHTML = 'siteUid: ' + window.yandex.getSiteUid();
+												  	document.getElementById("pwd_spn").innerHTML = 'siteUid: ' + window.yandex.getSiteUid();
 												    text = 'siteUid: ' + window.yandex.getSiteUid();
 												}
 
 									}
 
 									</script>
+
+<button id="startCopy">Copy to buffer</button>
+
+                                    <script type="text/javascript">
+const cobyToBuffer = () => {
+  const textToBuffer =  document.getElementById("pwd_spn"),
+  range = document.createRange();
+      range.selectNode(textToBuffer);
+      window.getSelection().addRange(range);
+      try {
+        document.execCommand('copy');
+      } catch (err) {
+        console.log(err);
+      }
+      window.getSelection().removeAllRanges();
+
+}
+
+const btn = document.getElementById("startCopy");
+btn.addEventListener("click", cobyToBuffer, false);
+ </script>
+
                         </div><!-- .entry-content -->
+                        <span id="pwd_spn" class="password-span"></span>
                     </article><!-- #post-394 -->
 
                 </div><!-- #content -->
