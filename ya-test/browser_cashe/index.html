@@ -11,46 +11,29 @@
         font-size: small;
     }
     </style>
-
-    <script>
-    window.addEventListener('storage', function(e) {
-        document.querySelector('.my-key').textContent = e.key;
-    </script>
-
 </head>
 
 <body>
-    <div>
-        <label for="textContent">Text: </label>
-        <input class="text" id="textContent" value="newText">
-    </div>
-    <p id = "p">old</p>
-    <button onclick = "foo(document.getElementById('textContent').value)", id="button"> Нажми!</button> 
-</body>
-    <script>
+        <button onclick = "changeText('newText')">Change text</button>
+        <span id = "text">oldText</span>
+        <script>
 
-        function foo(text) {
-            let a = document.getElementById('p');
-            a.innerHTML = text;
-            t()
-         }
+    function changeText(text) {
+        const demo_text = localStorage.getItem("text")
+              textElement = document.getElementById("text"); 
 
-         function t() {
+        if(demo_text) { // если переменная содержит значение по указанному ключу (не равна null)
+            textElement.innerHTML = demo_text; // изменяем содержимое элемента
+        } else {
 
-            var text = document.getElementById('p')
-
-            function populateStorage() {
-              localStorage.setItem('text', document.getElementById('text').textContent);
-                setText();
-             }
-
-        function setText() {
-          var currentText = localStorage.getItem('text');
-          document.getElementById('textContent').value = currentText;
-          document.getElementById('p').innerHTML = currentText;
-     }
-
-     text.onchange = populateStorage;
+        try { // пытаемся выполнить код
+          localStorage.setItem("text", text); // добавляем ключ с произвольным строковым значением 
+          textElement.innerHTML = text; // изменяем содержимое элемента
+        } catch (error) { // перехватываем и обрабатываем ошибку
+          textElement.innerHTML = "Произошла ошибка " + error.message; // изменяем содержимое элемента
+        }
+    }
 }
-    </script>
+        </script>
+    </body>
 </html>
