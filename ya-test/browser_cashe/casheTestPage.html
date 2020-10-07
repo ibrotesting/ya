@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!-- Copyright 2020 Yandex LLC. All rights reserved. -->
+<html>
+
+<head>
+    <meta name="apple-itunes-app">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum=1.0,user-scalable=no">
+    <style type="text/css">
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: small;
+    }
+    </style>
+
+    <script>
+    window.addEventListener('storage', function(e) {
+        document.querySelector('.my-key').textContent = e.key;
+    </script>
+
+</head>
+
+<body>
+    <p id = "text" ><span class="my-key">oldText</span></p>
+    <button onclick = "foo('newText')", id="button"> Нажми!</button> 
+</body>
+    <script>
+
+        function foo(text) {
+            let a = document.getElementById('text');
+            a.innerHTML = text;
+            t();
+        }
+
+        function t() {
+            if(!localStorage.getItem('text')) {
+                populateStorage();
+            } else {
+                setText();
+            }
+        }
+
+        function populateStorage() {
+              localStorage.setItem('text', document.getElementById('text').value);
+                setText();
+        }
+
+        function setText() {
+          var currentText = localStorage.getItem('text');
+          document.getElementById('text').value = currentText;
+     }
+    </script>
+</html>
