@@ -20,37 +20,34 @@
 </head>
 
 <body>
-    <p ><span class="my-key" id = "text">oldText</span></p>
-    <button onclick = "foo('newText')", id="button"> Нажми!</button> 
+    <div>
+        <label for="textContent">Text: </label>
+        <input class="text" id="textContent" value="newText">
+    </div>
+    <p id = "p">old</p>
+    <button onclick = "foo(document.getElementById('textContent').value)", id="button"> Нажми!</button> 
 </body>
     <script>
 
         function foo(text) {
-            let a = document.getElementById('text');
+            let a = document.getElementById('p');
             a.innerHTML = text;
             t()
          }
 
          function t() {
 
-        var text = document.getElementById('text');
+            var text = document.getElementById('p')
 
-        
-            if(!localStorage.getItem('text')) {
-                populateStorage();
-            } else {
+            function populateStorage() {
+              localStorage.setItem('text', document.getElementById('text').textContent);
                 setText();
-            }
-
-        function populateStorage() {
-              localStorage.setItem('text', document.getElementById('text').value);
-                setText();
-        }
+             }
 
         function setText() {
           var currentText = localStorage.getItem('text');
-          document.getElementById('text').value = currentText;
-          textElem.innerHTML = currentText;
+          document.getElementById('textContent').value = currentText;
+          document.getElementById('p').innerHTML = currentText;
      }
 
      text.onchange = populateStorage;
