@@ -11,29 +11,38 @@
         font-size: small;
     }
     </style>
+    <script>
+    window.addEventListener('DOMContentLoaded', function(){
+    let checkbox = document.querySelector('.rememberMe');
+    if(localStorage.getItem('demo_text')){
+        textElement.innerHTML = localStorage.getItem("demo_text");
+    };
+});
+    </script>>
 </head>
 
-<body>
-        <button onclick = "changeText('newText')">Change text</button>
-        <span id = "text">oldText</span>
+    <body>
+        <button onclick = "checkKey()">Check key</button>
+        <button onclick = "changeText('newText')">ChangeText</button> <!-- добавляем атрибут событий onclick -->
+        <span id = "textElement" class="rememberMe">oldText</span>
         <script>
 
-    function changeText(text) {
-        const demo_text = localStorage.getItem("text")
-              textElement = document.getElementById("text"); 
+    function checkKey() {
+      const demo_text = localStorage.getItem("demo_text"), // получаем значение из хранилища по указанному ключу
+                textElement = document.getElementById("textElement"); // производим поиск элемента по id и инициализируем переменную
 
-        if(demo_text) { // если переменная содержит значение по указанному ключу (не равна null)
-            textElement.innerHTML = demo_text; // изменяем содержимое элемента
-        } else {
-
+      if(demo_text) { // если переменная содержит значение по указанному ключу (не равна null)
+        textElement.innerHTML = localStorage.getItem("demo_text"); // изменяем содержимое элемента
+      } else {
         try { // пытаемся выполнить код
-          localStorage.setItem("text", text); // добавляем ключ с произвольным строковым значением 
-          textElement.innerHTML = text; // изменяем содержимое элемента
-        } catch (error) { // перехватываем и обрабатываем ошибку
-          textElement.innerHTML = "Произошла ошибка " + error.message; // изменяем содержимое элемента
-        }
+          localStorage.setItem("demo_text", "newText"); // добавляем ключ с произвольным строковым значением 
+        } catch (error) {}
+      }
     }
-}
-        </script>
-    </body>
-</html>
+
+    function changeText(text) {
+        const textElement = document.getElementById("textElement");
+              textElement.innerHTML = text;
+    }
+    </script>
+    </body></html>
