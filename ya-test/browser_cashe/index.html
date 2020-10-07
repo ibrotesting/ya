@@ -12,8 +12,8 @@
     }
     </style>
     <script>
-    window.addEventListener('DOMContentLoaded', function() {
-        let text = document.querySelector('.rememberMe');
+    window.addEventListener('DOMContentLoaded', function() { // Add listener which set value to textElement from local storage after reload page
+        let text = document.querySelector('.rememberMe'); 
         if (localStorage.getItem('demo_text')) {
             textElement.innerHTML = localStorage.getItem("demo_text");
         };
@@ -23,22 +23,22 @@
 
 <body>
     <p>
-        <button onclick="changeText('newText')">ChangeText</button>
+        <button onclick="changeText('newText')" id="button">ChangeText</button>
     </p>
     <p>
         <span id="textElement" class="rememberMe">oldText</span>
     </p>
     <script>
     function changeText(text) {
-        const demo_text = localStorage.getItem("demo_text"), // получаем значение из хранилища по указанному ключу
-            textElement = document.getElementById("textElement"); // производим поиск элемента по id и инициализируем переменную
+        const demo_text = localStorage.getItem("demo_text"), // Get value from local storage
+            textElement = document.getElementById("textElement");
 
-        if (demo_text) { // если переменная содержит значение по указанному ключу (не равна null)
-            textElement.innerHTML = localStorage.getItem("demo_text"); // изменяем содержимое элемента
-        } else {
-            try { // пытаемся выполнить код
+        if (demo_text) { // If value from local storage not nil set value to textElement
+            textElement.innerHTML = localStorage.getItem("demo_text");
+        } else { // // If value from local storage == nil set value to local storage and textElement
+            try {
                 localStorage.setItem("demo_text", "newText");
-                textElement.innerHTML = text; // добавляем ключ с произвольным строковым значением 
+                textElement.innerHTML = text;
             } catch (error) {}
         }
     }
