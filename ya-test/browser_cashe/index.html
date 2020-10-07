@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Copyright 2020 Yandex LLC. All rights reserved. -->
+&lt;!-- Copyright 2020 Yandex LLC. All rights reserved. --&gt;
 <html>
 
 <head>
@@ -12,37 +12,37 @@
     }
     </style>
     <script>
-    window.addEventListener('DOMContentLoaded', function(){
-    let text = document.querySelector('.rememberMe');
-    if(localStorage.getItem('demo_text')){
-        textElement.innerHTML = localStorage.getItem("demo_text");
-    };
-});
-    </script>>
+    window.addEventListener('DOMContentLoaded', function() {
+        let text = document.querySelector('.rememberMe');
+        if (localStorage.getItem('demo_text')) {
+            textElement.innerHTML = localStorage.getItem("demo_text");
+        };
+    });
+    </script>
 </head>
 
-    <body>
-        <p>
-        <button onclick = "changeText('newText')">ChangeText></button>
+<body>
+    <p>
+        <button onclick="changeText('newText')">ChangeText</button>
     </p>
     <p>
-        <span id = "textElement" class="rememberMe">oldText</span>
+        <span id="textElement" class="rememberMe">oldText</span>
     </p>
-        <script>
-
+    <script>
     function changeText(text) {
-      const demo_text = localStorage.getItem("demo_text"), // получаем значение из хранилища по указанному ключу
-                textElement = document.getElementById("textElement"); // производим поиск элемента по id и инициализируем переменную
+        const demo_text = localStorage.getItem("demo_text"), // получаем значение из хранилища по указанному ключу
+            textElement = document.getElementById("textElement"); // производим поиск элемента по id и инициализируем переменную
 
-      if(demo_text) { // если переменная содержит значение по указанному ключу (не равна null)
-        textElement.innerHTML = localStorage.getItem("demo_text"); // изменяем содержимое элемента
-      } else {
-        try { // пытаемся выполнить код
-          localStorage.setItem("demo_text", "newText");
-          textElement.innerHTML = text; // добавляем ключ с произвольным строковым значением 
-        } catch (error) {}
-      }
+        if (demo_text) { // если переменная содержит значение по указанному ключу (не равна null)
+            textElement.innerHTML = localStorage.getItem("demo_text"); // изменяем содержимое элемента
+        } else {
+            try { // пытаемся выполнить код
+                localStorage.setItem("demo_text", "newText");
+                textElement.innerHTML = text; // добавляем ключ с произвольным строковым значением 
+            } catch (error) {}
+        }
     }
     </script>
-    </body>
+</body>
+
 </html>
