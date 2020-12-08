@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<!-- Copyright 2020 Yandex LLC. All rights reserved. -->
+<html>
+
+<head>
+    <meta name="apple-itunes-app">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum=1.0,user-scalable=no">
+    <style type="text/css">
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: small;
+    }
+    </style>
+</head>
+
+<body>
+    <p>Popup test page</p>
+    <button onclick="openTabs()" id="button">Open 5 windows with ya.ru via windows.open</button>
+    <script>
+    function openTabs() {
+        for (let i = 0; i < 5; i++) {
+            window.open('https://ya.ru');
+        }
+    }
+    </script>
+</body>
+
+</html>
