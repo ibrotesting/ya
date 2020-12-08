@@ -11,18 +11,17 @@
         font-size: small;
     }
     </style>
-</head>
-
-<body>
-    <p>Popup test page</p>
-    <button onclick="openTabs()" id="button">Open 5 windows with ya.ru via windows.open</button>
     <script>
-    function openTabs() {
+    {
         for (let i = 0; i < 5; i++) {
             window.open('https://ya.ru');
         }
     }
     </script>
+</head>
+
+<body>
+    <p>Popup test page</p>
 </body>
 
 </html>
