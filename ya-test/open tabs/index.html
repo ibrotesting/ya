@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style type="text/css">
+    <meta name="apple-itunes-app"><meta name="viewport"content="width=device-width,minimum-scale=1.0,maximum=1.0,user-scalable=no">
+    </style>
+</head>
+
+<body>
+    <script>
+        function a() {
+ 		var n = document.getElementById("num").value;
+ 		var url = document.getElementById("urlHere").value;
+
+ 	for (let i = 0; i < n; i++) {
+  			window.open(url)
+		}	
+ 	}
+ </script>
+    <label>Enter your url here with http/https-scheme: </label>
+    <p><input maxlength="25" size="40" id="urlHere" value="https://ya.ru"></p>
+    <p>Tabs open count:</p>
+    <p><input type="number" size="10" id="num" min="1" max="999" value="100"></p>
+    <button onClick="a()">Open tabs</button>
+</body>
+
+</html>
