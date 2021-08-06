@@ -9,34 +9,20 @@
 
 <body>
     <script>
-    function b() {
-
         function a() {
  		var n = document.getElementById("num").value;
  		var url = document.getElementById("urlHere").value;
 
-     	for (let i = 0; i < n; i++) {
-      			window.open(url)
-    		}	
-     	}
-
-
-        let start = Date.now();
-        let times = [];
-
-        setTimeout(function run() {
-          times.push(Date.now() - start); // запоминаем задержку от предыдущего вызова
-
-          if (start + 100 < Date.now()) a(); // показываем задержку через 100 мс
-          else setTimeout(run);
-        });
-};
+ 	for (let i = 0; i < n; i++) {
+  			window.open(url)
+		}	
+ 	}
  </script>
     <label>Enter your url here with http/https-scheme: </label>
     <p><input maxlength="25" size="40" id="urlHere" value="https://ya.ru"></p>
     <p>Tabs open count:</p>
     <p><input type="number" size="10" id="num" min="1" max="999" value="100"></p>
-    <button onClick="b()">Open tabs</button>
+    <button onClick="a()">Open tabs</button>
 </body>
 
 </html>
