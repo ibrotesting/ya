@@ -9,19 +9,28 @@
 
 <body>
     <script>
-        function a() {
+    function a() {
  		var n = document.getElementById("num").value;
  		var url = document.getElementById("urlHere").value;
+        var delay = document.getElementById("delay").value;
 
- 	for (let i = 0; i < n; i++) {
-  			window.open(url)
-		}	
+        let current = 0
+
+          let timerId = setInterval(function() {
+                window.open(url)
+                if (current == n - 1) {
+                  clearInterval(timerId);
+                }
+                current++;
+              }, delay * 1000);
  	}
  </script>
     <label>Enter your url here with http/https-scheme: </label>
-    <p><input maxlength="25" size="40" id="urlHere" value="https://ya.ru"></p>
+    <p><input maxlength="400" size="40" id="urlHere" value="https://ya.ru"></p>
     <p>Tabs open count:</p>
     <p><input type="number" size="10" id="num" min="1" max="999" value="100"></p>
+    <p>Delay in seconds:</p>
+    <p><input type="number" size="10" id="delay" min="1" max="999" value="1"></p>
     <button onClick="a()">Open tabs</button>
 </body>
 
